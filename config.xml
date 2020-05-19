@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.cordovartc.sample" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Cordova iOSRTC Sample</name>
+    <description>
+        A sample Apache Cordova iOSRTC application that use cordova-plugin-iosrtc
+    </description>
+    <author email="support+cordova-rtc@sylaps.com" href="https://github.com/cordova-rtc">
+        Cordova-RTC Team
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <access origin="https://*.ngrok.io/*" subdomains="true" />
+    <allow-navigation href="https://*.ngrok.io/*" />
+    <preference name="AppendUserAgent" value="iOSRTC Sample" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="Fullscreen" value="false" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+        <preference name="WKWebViewOnly" value="true" />
+        <preference name="Orientation" value="all" />
+        <preference name="target-device" value="universal" />
+        <preference name="StatusBarOverlaysWebView" value="false" />
+        <preference name="StatusBarBackgroundColor" value="#000000" />
+        <preference name="StatusBarStyle" value="blacktranslucent" />
+        <preference name="BackgroundColor" value="#000000" />
+        <preference name="DetectMediaTypes" value="true" />
+        <preference name="WebViewBounce" value="false" />
+        <preference name="KeyboardShrinksView" value="true" />
+        <preference name="allowInlineMediaPlayback" value="true" />
+        <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
+        <preference name="AllowBackForwardNavigationGestures" value="true" />
+        <preference name="Allow3DTouchLinkPreview" value="false" />
+        <preference name="AllowInlineMediaPlayback" value="true" />
+        <feature name="CDVWKWebViewEngine">
+            <param name="ios-package" value="CDVWKWebViewEngine" />
+        </feature>
+        <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
+        <icon height="20" src="res/icon/ios/icon-20.png" width="20" />
+        <icon height="40" src="res/icon/ios/icon-20@2x.png" width="40" />
+        <icon height="60" src="res/icon/ios/icon-20@3x.png" width="60" />
+        <icon height="40" src="res/icon/ios/icon-40.png" width="40" />
+        <icon height="80" src="res/icon/ios/icon-40@2x.png" width="80" />
+        <icon height="50" src="res/icon/ios/icon-50.png" width="50" />
+        <icon height="100" src="res/icon/ios/icon-50@2x.png" width="100" />
+        <icon height="120" src="res/icon/ios/icon-60@2x.png" width="120" />
+        <icon height="180" src="res/icon/ios/icon-60@3x.png" width="180" />
+        <icon height="72" src="res/icon/ios/icon-72.png" width="72" />
+        <icon height="144" src="res/icon/ios/icon-72@2x.png" width="144" />
+        <icon height="76" src="res/icon/ios/icon-76.png" width="76" />
+        <icon height="152" src="res/icon/ios/icon-76@2x.png" width="152" />
+        <icon height="167" src="res/icon/ios/icon-83.5@2x.png" width="167" />
+        <icon height="1024" src="res/icon/ios/icon-1024.png" width="1024" />
+        <icon height="29" src="res/icon/ios/icon-small.png" width="29" />
+        <icon height="58" src="res/icon/ios/icon-small@2x.png" width="58" />
+        <icon height="87" src="res/icon/ios/icon-small@3x.png" width="87" />
+        <icon height="57" src="res/icon/ios/icon.png" width="57" />
+        <icon height="114" src="res/icon/ios/icon@2x.png" width="114" />
+        <icon height="48" src="res/icon/ios/AppIcon24x24@2x.png" width="48" />
+        <icon height="55" src="res/icon/ios/AppIcon27.5x27.5@2x.png" width="55" />
+        <icon height="58" src="res/icon/ios/AppIcon29x29@2x.png" width="58" />
+        <icon height="87" src="res/icon/ios/AppIcon29x29@3x.png" width="87" />
+        <icon height="80" src="res/icon/ios/AppIcon40x40@2x.png" width="80" />
+        <icon height="88" src="res/icon/ios/AppIcon44x44@2x.png" width="88" />
+        <icon height="172" src="res/icon/ios/AppIcon86x86@2x.png" width="172" />
+        <icon height="196" src="res/icon/ios/AppIcon98x98@2x.png" width="196" />
+        <splash height="480" src="res/screen/ios/Default~iphone.png" width="320" />
+        <splash height="960" src="res/screen/ios/Default@2x~iphone.png" width="640" />
+        <splash height="1136" src="res/screen/ios/Default-568h@2x~iphone.png" width="640" />
+        <splash height="1334" src="res/screen/ios/Default-667h.png" width="750" />
+        <splash height="2208" src="res/screen/ios/Default-736h.png" width="1242" />
+        <splash height="1242" src="res/screen/ios/Default-Landscape-736h.png" width="2208" />
+        <splash height="2436" src="res/screen/ios/Default-2436h.png" width="1125" />
+        <splash height="1125" src="res/screen/ios/Default-Landscape-2436h.png" width="2436" />
+        <splash height="2688" src="res/screen/ios/Default-2688h.png" width="1242" />
+        <splash height="1242" src="res/screen/ios/Default-Landscape-2688h.png" width="2688" />
+        <splash height="1792" src="res/screen/ios/Default-1792h.png" width="828" />
+        <splash height="828" src="res/screen/ios/Default-Landscape-1792h.png" width="1792" />
+        <splash height="1024" src="res/screen/ios/Default-Portrait~ipad.png" width="768" />
+        <splash height="2048" src="res/screen/ios/Default-Portrait@2x~ipad.png" width="1536" />
+        <splash height="768" src="res/screen/ios/Default-Landscape~ipad.png" width="1024" />
+        <splash height="1536" src="res/screen/ios/Default-Landscape@2x~ipad.png" width="2048" />
+        <config-file parent="NSCameraUsageDescription" target="*-Info.plist">
+            <string>This application requires access to the devices camera to record and send the users camera image via video chat functionality</string>
+        </config-file>
+        <config-file parent="NSPhotoLibraryUsageDescription" target="*-Info.plist">
+            <string>TThis application requires access to the devices image library to display an image as the users profile picture and/or send images via message chat functionality</string>
+        </config-file>
+        <config-file parent="NSMicrophoneUsageDescription" target="*-Info.plist">
+            <string>This application requires access to the devices microphone to record and send the users voice message via video/voice chat functionality</string>
+        </config-file>
+        <config-file parent="NSBluetoothAlwaysUsageDescription" target="*-Info.plist">
+            <string>This application requires access to the bluetooth wireless headphones and microphone to broadcast or record and send the users voice message via video/voice chat functionality</string>
+        </config-file>
+    </platform>
+    <plugin name="cordova-plugin-whitelist" spec="^1.3.4" />
+    <plugin name="cordova.plugins.diagnostic" spec="^5.0.0" />
+    <plugin name="cordova-plugin-statusbar" spec="^2.4.3" />
+    <plugin name="cordova-plugin-background-mode" spec="^0.7.3" />
+    <plugin name="cordova-plugin-wkwebview-engine" spec="^1.2.1" />
+    <plugin name="cordova-plugin-ipad-multitasking" spec="^0.1.1" />
+    <plugin name="cordova-custom-config" spec="^5.1.0" />
+    <engine name="android" spec="^8.1.0" />
+    <plugin name="cordova-plugin-iosrtc" spec="https://github.com/cordova-rtc/cordova-plugin-iosrtc#bugs/ontrack" />
+    <engine name="ios" spec="latest" />
+</widget>

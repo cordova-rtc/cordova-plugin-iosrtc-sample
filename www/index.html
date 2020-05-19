@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Security-Policy" content=" media-src * blob: ; script-src * 'self' 'unsafe-inline' 'unsafe-eval'; connect-src * blob: http: https: 'self' 'unsafe-inline' 'unsafe-eval' http://*/* https://*/* https://*:* ">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no,viewport-fit=cover">
+
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+        <title>Cordova-RTC</title>
+        <script type="text/javascript" src="cordova.js"></script>
+    </head>
+    <body>
+        <div class="app">
+            <div class="remote-stream">
+                <div class="remote-video-loader hidden" class="hidden">Loading...</div>
+                <video class="remote-video hidden" autoplay="autoplay" playsinline="playsinline" webkit-playsinline _src="assets/Sunset.mp4"></video>
+                <div class="notice notice-alone">
+                    Press Call button to start the call.
+                </div>
+            </div>
+            <div class="controls footer-controls">
+                <button class="btn btn-round hidden" name="mic_on">
+                    <i class="material-icons">mic</i>
+                </button>
+                <button class="btn btn-round" name="mic_off">
+                    <i class="material-icons">mic_off</i>
+                </button>
+                <button class="btn btn-round btn-danger btn-hangup hidden " name="hangup_remote">
+                    <i class="material-icons">call_end</i>
+                </button>
+                <button class="btn btn-round btn-call" name="call_remote">
+                    <i class="material-icons">call</i>
+                </button>
+                <button class="btn btn-round hidden" name="camera_on">
+                    <i class="material-icons">videocam</i>
+                </button>
+                <button class="btn btn-round" name="camera_off">
+                    <i class="material-icons">videocam_off</i>
+                </button>
+            </div>
+            <div class="local-stream">
+                <video class="local-video" muted autoplay="autoplay" playsinline="playsinline" webkit-playsinline _src="assets/Sunset.mp4"></video>
+            </div>
+            <div class="controls local-controls">
+                <button class="btn btn-round btn-sm" name="switch_camera">
+                    <i class="material-icons">flip_camera_ios</i>
+                </button>
+            </div>
+            <div class="controls top-controls">
+                <button class="btn btn-round btn-info" name="settings">
+                    <i class="material-icons">settings</i>
+                </button>
+                <button class="btn btn-round" name="speaker">
+                    <i class="material-icons">speaker_phone</i>
+                </button>
+                <button class="btn btn-round" name="earpiece">
+                    <i class="material-icons">headset</i>
+                </button>
+                <button class="btn btn-round hidden" name="unmute_remote">
+                    <i class="material-icons">volume_up</i>
+                </button>
+                <button class="btn btn-round" name="mute_remote">
+                    <i class="material-icons">volume_off</i>
+                </button>
+            </div>
+            <div class="controls report-controls">
+                <button class="btn btn-report" name="report">
+                    <i class="material-icons">bug_report</i>
+                </button>
+            </div>
+        </div>
+        <script type="text/javascript" src="js/common.js"></script>
+        <script type="text/javascript" src="js/index-local.js"></script>
+        <!--<script type="text/javascript" src="js/index-webrtc.js"></script>-->
+        <!--<script type="text/javascript" src="js/index-janus.js"></script>-->
+        <!--<script type="text/javascript" src="js/index-jssip.js"></script>-->
+    </body>
+</html>
