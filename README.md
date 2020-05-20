@@ -23,6 +23,8 @@ In order to make this Cordova plugin run into a iOS application some requirement
 * Janus => 0.7.4
 * JSSip => 3.1.2
 * Sip.js => 0.15.6
+* Twilio => 2.0.0
+* Open-Easyrtc => 2.0.5
 
 ## Author
 
