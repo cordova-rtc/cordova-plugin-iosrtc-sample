@@ -20,6 +20,7 @@ In order to make this Cordova plugin run into a iOS application some requirement
 
 * WebRTC W3C v1.0.0
 * WebRTC.framework => M69
+* WebSocket
 * Janus => 0.7.4
 * JSSip => 3.1.2
 * Sip.js => 0.15.6
