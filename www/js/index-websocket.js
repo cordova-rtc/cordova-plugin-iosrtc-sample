@@ -1,4 +1,7 @@
 /* global RTCPeerConnection */
+const WEBSOCKET_SERVER = 'connect.websocket.in/v3';
+const WEBSOCKET_CHANNEL = '1';
+const WEBSOCKET_TOKEN = "oCdCMcMPQpbvNjUIzqtvF1d2X2okWpDQj4AwARJuAgtjhzKxVEjQU6IdCjwm";
 
 //
 // RTCPeerConnection Config
@@ -46,9 +49,9 @@ var answerConstraints = {
 //
 
 var webSocket,
-    webSocketChannel,
-    webSocketToken  ="eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjI1MzY1ZmE5NDYzMDdlYzI5NTY5M2FhODU3MGE2NWNiZWUwOGFlN2RmNjdlNTljY2ZhMjNhZTdhODBkY2U2ZGZkZWVkMDk1NmQ0ZjZmMDdkIn0.eyJhdWQiOiI4IiwianRpIjoiMjUzNjVmYTk0NjMwN2VjMjk1NjkzYWE4NTcwYTY1Y2JlZTA4YWU3ZGY2N2U1OWNjZmEyM2FlN2E4MGRjZTZkZmRlZWQwOTU2ZDRmNmYwN2QiLCJpYXQiOjE1ODQ1MzEzNjcsIm5iZiI6MTU4NDUzMTM2NywiZXhwIjoxNjE2MDY3MzY3LCJzdWIiOiI1ODAiLCJzY29wZXMiOltdfQ.f9uac1rUDqSABLRkNCEfKEDZZcdpI8qDSAr6KlWxQSpEzL31H9YBvmnzAA5N9Tt8BHOCduwsLE8B1XXNSbN2rcJfG6fWqvKfcbiWRLBK9xNWrSFerQ-DyoaWMZoapz0AjZyVAdDWU9X9Ch7SM00CLdLVbP1jBgGeNNlf3Gv_Cw7FNO8e6uS7C1-yZssZWlL7JSXNBWyS_uAJ9iOY2ls423ZcOKGWzHmUC5jM2WgOtsdm7_ErCAxGtHZ-ldN8xXzKA8hd3CMIgUdpSt_jmWc_wvruTrciZixqgOtu8oHDiJm4Al0oSMhQuoibIbJhmH4EU2ENAhFW6Z1dPCMb5vYT2wWinePgFHSKtHOCsUXV-Y9V_2ibVXQnBbAHhtTKM7yyErkvqkeFffUwcegyBBx1BYT1cHAXw_l6PynW2GB5HXUL5TB4d1ZtAJshhwnoAEJEH7gGSfic5jRG4L-J_mt17GIA42sD6b7Wj8H3Y2NfLN0Ovq9oRw8Ha0l0Bim7s2v8kljXTKqm8Fb-51-SFF7Try733rp1yqAGwpPuMtGix7tOSmTMrnbV8qCx6xyjQ4xb_POaOHiGbT_yGtgqPYg7gVX-zQn53sDIlIy01AylCx1EX-nqkH-N9E5B1LOU2KgTvmdrLzoNfNERTN7EugDGZufEp0Vq6PGw7agvowwGSHE",
-    webSocketHostname = 'connect.websocket.in/v2';
+    webSocketChannel = WEBSOCKET_CHANNEL,
+    webSocketToken = WEBSOCKET_TOKEN,
+    webSocketHostname = WEBSOCKET_SERVER;
 
 function webSocketSendMessage(msg) {
     console.debug('webSocketSendMessage', msg);
@@ -64,10 +67,8 @@ function notifyWebSocketRoom() {
 
 function joinWebSocketRoom() {
 
-    webSocketChannel = window.prompt('Enter Room Number', webSocketChannel) || '123';
-
     var webSocketUrl = 'wss://' + webSocketHostname + '/' + webSocketChannel +
-                        '?token=' + webSocketToken;
+                        '?apiKey=' + webSocketToken;
 
     webSocket = new WebSocket(webSocketUrl);
 
