@@ -1,7 +1,7 @@
 /* global RTCPeerConnection */
 const WEBSOCKET_SERVER = 'connect.websocket.in/v3';
 const WEBSOCKET_CHANNEL = '1';
-const WEBSOCKET_TOKEN = "oCdCMcMPQpbvNjUIzqtvF1d2X2okWpDQj4AwARJuAgtjhzKxVEjQU6IdCjwm";
+const WEBSOCKET_TOKEN = "ySGGACsat7vGEyQdDwrFSu0AoWCae2uNsZe418d7eh6AfJDr9U9nUcgp5MtS";
 
 //
 // RTCPeerConnection Config
