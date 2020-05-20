@@ -74,20 +74,24 @@ function TestRTCPeerConnection(localStream) {
         onAddIceCandidate(pc1, e.candidate);
     });
 
-    var peerStream = new MediaStream();
-    TestSetPeerStream(peerStream);
+    var useTrackEvent = Object.getOwnPropertyDescriptors(RTCPeerConnection.prototype).ontrack;
 
-    pc2.addEventListener('track', function(e) {
-        console.log('pc2.track', e);
-        peerStream.addTrack(e.track);
-    });
+    if (useTrackEvent) {
 
-    /*
-    pc2.addEventListener('addstream', function(e) {
-        console.log('pc2.addStream', e);
-        TestSetPeerStream(e.stream);
-    });
-    */
+        var peerStream = new MediaStream();
+        TestSetPeerStream(peerStream);
+
+        pc2.addEventListener('track', function(e) {
+            console.log('pc2.track', e);
+            peerStream.addTrack(e.track);
+        });
+    } else {
+
+        pc2.addEventListener('addstream', function(e) {
+            console.log('pc2.addStream', e);
+            TestSetPeerStream(e.stream);
+        });
+    }
 
     pc2.addEventListener('removestream', function(e) {
         console.log('pc2.removeStream', e);
