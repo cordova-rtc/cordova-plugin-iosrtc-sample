@@ -1,0 +1,11 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "Cordova iOSRTC Sample",
+  "short_name": "Cordova iOSRTC Sample",
+  "version": "com.cordovartc.sample",
+  "description": "A sample Apache Cordova iOSRTC application that use cordova-plugin-iosrtc",
+  "author": "Cordova-RTC Team",
+  "icons": [],
+  "start_url": "index.html"
+}

@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.cordovartc.sample" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Cordova iOSRTC Sample</name>
+    <description>
+        A sample Apache Cordova iOSRTC application that use cordova-plugin-iosrtc
+    </description>
+    <author email="support+cordova-rtc@sylaps.com" href="https://github.com/cordova-rtc">
+        Cordova-RTC Team
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <access origin="https://*.ngrok.io/*" subdomains="true" />
+    <allow-navigation href="https://*.ngrok.io/*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <preference name="AppendUserAgent" value="iOSRTC Sample" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="Fullscreen" value="false" />
+</widget>

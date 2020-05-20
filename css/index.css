@@ -1,0 +1,294 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+html {
+    height:100%;
+    width:100%;
+    -webkit-text-size-adjust: none;
+    touch-action: manipulation;
+}
+
+body {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    font-family: "RobotoDraft", "Roboto", "Helvetica", sans-serif;
+    font-size:12px;
+    height:100%;
+    width:100%;
+    margin:0px;
+    padding:0px;
+}
+
+/* Portrait layout (default) */
+.app {
+    display: flex;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+}
+
+.hidden {
+    display: none !important;
+}
+
+video {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-width: 100%;
+}
+
+.remote-stream {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 100%;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+}
+
+.remote-stream video {
+    object-fit: cover;
+}
+
+.remote-stream video.video-only {
+    object-fit: contain;
+}
+
+.local-stream {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    right: 0;
+    padding: 10px 10px 0 0;
+    width: 33%;
+    height: 25%;
+}
+
+.local-stream video {
+    object-fit: cover;
+    border-radius: 10px;
+    z-index: 10;
+}
+
+.local-stream  video {
+    -webkit-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    -ms-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+/* Button */
+
+.btn {
+    border: none;
+    background: transparent;
+}
+
+.btn.btn-round {
+    box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+    box-sizing: border-box;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    border: none;
+    -webkit-tap-highlight-color: transparent;
+    display: inline-block;
+    white-space: nowrap;
+    text-decoration: none;
+    vertical-align: baseline;
+    text-align: center;
+    margin: 0;
+    min-width: 64px;
+    line-height: 36px;
+    padding: 0 16px;
+    border-radius: 4px;
+    overflow: visible;
+    transition: background .4s cubic-bezier(.25,.8,.25,1),box-shadow 280ms cubic-bezier(.4,0,.2,1);
+    min-width: 0;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    flex-shrink: 0;
+    background-color: rgba(149, 151, 150, 0.53);
+    line-height: 0px;
+}
+
+.btn.btn-active{
+    background-color: #01579b;
+}
+
+
+.btn.btn-danger {
+    background-color: #f44336;
+}
+
+.btn.btn-call {
+    background-color: #4caf50;
+    width: 56px;
+    height: 56px;
+}
+
+.btn.btn-settings {
+    background-color: #f44336;
+    width: 84px;
+    height: 84px;
+}
+
+.btn.btn-hangup {
+    width: 56px;
+    height: 56px;
+}
+
+.btn.btn-report {
+    width: 56px;
+    height: 56px;
+    background-color: #ffb300;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+.btn i {
+    color: #fff;
+}
+
+/* */
+
+.notice {
+    z-index: 200;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: rgba(51, 51, 51, .5);
+    border-radius: 10px;
+    position: absolute;
+}
+
+/* Controls */
+
+.controls {
+    z-index: 100;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.top-controls {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 0;
+}
+
+.top-controls .btn{
+    margin: 10px 0;
+}
+
+.footer-controls {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-controls .btn{
+    margin: 0 10px;
+}
+
+.local-controls {
+    position: absolute;
+    top: 26%;
+    width: 33%;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.report-controls {
+    position: absolute;
+}
+
+.report-controls  {
+    position: absolute;
+    top: 65vh;
+    right: 0;
+    padding-right: 0;
+}
+
+/* Landscape layout (with min-width) */
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+    .report-controls  {
+        top: 75vh;
+    }
+
+    .local-stream {
+        width: 25%;
+        height: 33%;
+    }
+
+    .local-controls {
+        top: 34%;
+        width: 25%;
+    }
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+.material-icons {
+    color: white;
+}
