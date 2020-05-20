@@ -95,8 +95,8 @@ function TestGetUserMedia(deviceId) {
                 return device.deviceId !== 'default';
             });
 
-            localDeviceId = newDevice ? newDevice.deviceId : 'default';
-            return TestGetUserMedia(localDeviceId);
+            localDeviceId = newDevice ? newDevice.deviceId : null;
+            return TestGetUserMedia(localDeviceId || 'default');
         });
     }
 
@@ -620,13 +620,16 @@ function TestIosRTCSample(event) {
         TestControls();
 
         loadScript(adapterUrl).then(function() {
-            TestGetUserMedia().then(function(localStream) {
-                TestRTCPeerConnection(localStream);
+            return TestGetUserMedia().then(function(localStream) {
+                return TestRTCPeerConnection(localStream);
             });
+        }).catch(function (err) {
+            console.error(err);
         });
 
     } else {
         document.addEventListener('deviceready', function() {
+
             // Init cordova plugins
             if (window.device && window.device.platform == 'iOS') {
 
@@ -656,9 +659,11 @@ function TestIosRTCSample(event) {
 
             TestControls();
             loadScript(adapterUrl).then(function () {
-                TestGetUserMedia().then(function(localStream) {
-                    TestRTCPeerConnection(localStream);
+                return TestGetUserMedia().then(function(localStream) {
+                    return TestRTCPeerConnection(localStream);
                 });
+            }).catch(function (err) {
+                console.error(err);
             });
         });
     }
