@@ -8,15 +8,15 @@ function TestRTCPeerConnection() {
 	    return this;
 	};
 
-	loadScript('https://media.twiliocdn.com/sdk/js/video/releases/2.0.0/twilio-video.js').then(function () {
-		joinRoom({
+	return loadScript('https://media.twiliocdn.com/sdk/js/video/releases/2.0.0/twilio-video.js').then(function () {
+		return joinRoom({
 			token: TWILIO_TOKEN,
 			room: TWILIO_GROUP
 		});
 	});
 }
 
-function joinRoom(result) {
+function joinRoom(config) {
 
 	const Video = Twilio.Video;
 	Video.createLocalVideoTrack().then(track => {
@@ -24,8 +24,8 @@ function joinRoom(result) {
 	    localMediaContainer.appendChild(track.attach());
 	});
 
-	Video.connect(result.token, {
-	    name: result.room,
+	Video.connect(config.token, {
+	    name: config.room,
 	    sdpSemantics: 'plan-b',
 	    bundlePolicy: 'max-compat'
 	}).then(room => {
