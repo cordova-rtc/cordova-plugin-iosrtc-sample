@@ -111,6 +111,7 @@
     <plugin name="cordova-plugin-ipad-multitasking" spec="^0.1.1" />
     <plugin name="cordova-custom-config" spec="^5.1.0" />
     <engine name="android" spec="^8.1.0" />
-    <plugin name="cordova-plugin-iosrtc" spec="https://github.com/cordova-rtc/cordova-plugin-iosrtc#bugs/ontrack" />
-    <engine name="ios" spec="latest" />
+    <engine name="browser" spec="^5.0.4" />
+    <engine name="ios" spec="^5.1.1" />
+    <plugin name="cordova-plugin-iosrtc" spec="https://github.com/cordova-rtc/cordova-plugin-iosrtc#master" />
 </widget>
