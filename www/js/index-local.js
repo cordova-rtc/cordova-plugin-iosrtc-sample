@@ -78,12 +78,24 @@ function TestRTCPeerConnection(localStream) {
 
     if (useTrackEvent) {
 
-        var peerStream = new MediaStream();
-        TestSetPeerStream(peerStream);
+        var useTrackEventStreams = false;
+
+        if (!useTrackEventStreams) {
+            var peerStream = new MediaStream();
+            TestSetPeerStream(peerStream);
+        } else {
+            peerStream = null;
+        }
 
         pc2.addEventListener('track', function(e) {
             console.log('pc2.track', e);
-            peerStream.addTrack(e.track);
+
+            if (useTrackEventStreams) {
+                peerStream = e.streams[0];
+                TestSetPeerStream(peerStream);
+            } else {
+                peerStream.addTrack(e.track);
+            }
         });
     } else {
 

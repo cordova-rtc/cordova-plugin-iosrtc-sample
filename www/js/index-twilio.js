@@ -8,7 +8,7 @@ function TestRTCPeerConnection() {
 	    return this;
 	};
 
-	return loadScript('https://media.twiliocdn.com/sdk/js/video/releases/2.0.0/twilio-video.js').then(function () {
+	return loadScript('https://media.twiliocdn.com/sdk/js/video/releases/2.4.0/twilio-video.js').then(function () {
 		return joinRoom({
 			token: TWILIO_TOKEN,
 			room: TWILIO_GROUP
@@ -20,19 +20,19 @@ function joinRoom(config) {
 
 	const Video = Twilio.Video;
 	Video.createLocalVideoTrack().then(track => {
-	    const localMediaContainer = document.getElementById('local-media');
-	    localMediaContainer.appendChild(track.attach());
+	    //const localMediaContainer = document.querySelector('.local-stream');
+	    ///localMediaContainer.appendChild(track.attach());
 	});
 
 	Video.connect(config.token, {
 	    name: config.room,
-	    sdpSemantics: 'plan-b',
-	    bundlePolicy: 'max-compat'
+	    //sdpSemantics: 'plan-b',
+	    //bundlePolicy: 'max-compat'
 	}).then(room => {
 	    console.log(`Successfully joined a Room: ${room}`);
 
 		// Attach the Tracks of the Room's Participants.
-		var remoteMediaContainer = document.getElementById('remote-media');
+		var remoteMediaContainer = document.querySelector('.remote-stream');
 			room.participants.forEach(function(participant) {
 			console.log("Already in Room: '" + participant.identity + "'");
 			participantConnected(participant, remoteMediaContainer);
@@ -66,7 +66,8 @@ function joinRoom(config) {
 	        }
 	    });
 
-	    document.getElementById('remote-media').appendChild(div);
+        var remoteMediaContainer = document.querySelector('.remote-stream');
+	    remoteMediaContainer.appendChild(div);
 	}
 
 	function participantDisconnected(participant) {
