@@ -1,33 +1,78 @@
-const TWILIO_TOKEN = 'YOUR_TWILIO_TOKEN';
-const TWILIO_GROUP = 'test';
+/* jshint esversion: 6 */
+const TWILIO_TOKEN = '';
+const TWILIO_ROOM = 'test';
+const TWILIO_API_URL = 'https://example.com';
+const TWILIO_VERSION = '2.4.0';
 
-function TestRTCPeerConnection() {
+function TestRTCPeerConnection(localStream) {
 
 	// Patch MediaStreamTrack with clone
 	MediaStreamTrack.prototype.clone = function () {
 	    return this;
 	};
 
-	return loadScript('https://media.twiliocdn.com/sdk/js/video/releases/2.4.0/twilio-video.js').then(function () {
-		return joinRoom({
-			token: TWILIO_TOKEN,
-			room: TWILIO_GROUP
+	return loadScript('https://media.twiliocdn.com/sdk/js/video/releases/' + TWILIO_VERSION + '/twilio-video.js').then(function () {
+		return getToken().then(function (token) {
+			return joinRoom(localStream, {
+				token: TWILIO_TOKEN,
+				room: TWILIO_ROOM
+			});
 		});
 	});
 }
 
-function joinRoom(config) {
+function getToken() {
+	if (TWILIO_TOKEN && TWILIO_ROOM) {
+		return Promise.resolve({
+			token: TWILIO_TOKEN,
+			room: TWILIO_ROOM
+		});
+	}
 
-	const Video = Twilio.Video;
-	Video.createLocalVideoTrack().then(track => {
-	    //const localMediaContainer = document.querySelector('.local-stream');
-	    ///localMediaContainer.appendChild(track.attach());
+	// Example via fetch with XSRF TOKEN
+	fetch(TWILIO_API_URL + "/auth/session", {
+        method: 'get'
+    }).then(function (res) {
+        var xsrf = res.headers.get('X-XSRF-TOKEN');
+        var opts = {
+            room: TWILIO_ROOM,
+            peerId: 'User-' + Date.now()
+        };
+        fetch(TWILIO_API_URL + "/api/twiml/room/token", {
+            method: 'post',
+            body: JSON.stringify(opts),
+            headers: {
+                'X-XSRF-TOKEN': xsrf,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }).then(function (res) {
+            return res.json();
+        });
+    });
+}
+
+function _TestGetUserMedia(deviceId) {
+	Video.createLocalTracks().then(tracks => {
+    	var localMediaContainer = document.querySelector('.local-stream');
+    	tracks.forEach(function(track) {
+    		localMediaContainer.appendChild(track.attach());
+    	});
 	});
+}
+
+function joinRoom(localStream, config) {
+
+	var Video = Twilio.Video;
+	var audioTracks = localStream.getAudioTracks().map(track => new Video.LocalAudioTrack(track));
+	var videoTracks = localStream.getVideoTracks().map(track => new Video.LocalVideoTrack(track));
+	var tracks = audioTracks.concat(videoTracks);
 
 	Video.connect(config.token, {
 	    name: config.room,
-	    //sdpSemantics: 'plan-b',
-	    //bundlePolicy: 'max-compat'
+	    tracks: tracks,
+	    sdpSemantics: 'plan-b',
+	    bundlePolicy: 'max-compat'
 	}).then(room => {
 	    console.log(`Successfully joined a Room: ${room}`);
 
@@ -52,12 +97,13 @@ function joinRoom(config) {
 	    console.error(`Unable to connect to Room: ${error.message}`);
 	});
 
+
 	function participantConnected(participant) {
 	    console.log('Participant "%s" connected', participant.identity);
-	    const div = document.createElement('div');
+	    var div = document.createElement('div');
 	    div.id = participant.sid;
 	    participant.on('trackSubscribed', (track) => {
-	    	trackSubscribed(div, track)
+	    	trackSubscribed(div, track);
 	    });
 	    participant.on('trackUnsubscribed', trackUnsubscribed);
 	    participant.tracks.forEach(publication => {
@@ -73,7 +119,7 @@ function joinRoom(config) {
 	function participantDisconnected(participant) {
 	    console.log('Participant "%s" disconnected', participant.identity);
 
-	    var div = document.getElementById(participant.sid)
+	    var div = document.getElementById(participant.sid);
 	    if (div) {
 	    	div.remove();
 	    }
