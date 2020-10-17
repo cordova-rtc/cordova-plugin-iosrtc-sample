@@ -35,6 +35,9 @@ var answerConstraints = {
 
 var pc1, pc2;
 
+
+var useTrackEvent = false; //Object.getOwnPropertyDescriptors(RTCPeerConnection.prototype).ontrack;
+
 function TestRTCPeerConnection(localStream) {
 
     // Current you cannot reuse previous RTCPeerConnection
@@ -44,21 +47,22 @@ function TestRTCPeerConnection(localStream) {
     peerConnections.pc1 = pc1;
     peerConnections.pc2 = pc2;
 
-    // Note: Deprecated but supported
-    pc1.addStream(localStream);
+    if (useTrackEvent) {
 
-    // Note: Deprecated Test removeStream
-    // pc1.removeStream(pc1.getLocalStreams()[0])
+        localStream.getTracks().forEach(function (track) {
+          console.log('addTrack', track);
+          pc1.addTrack(track);
+        });
+        
+    // Note: Deprecated but supported    
+    } else {
 
-    // Note: Chrome Version 77.0.3865.90 (Official Build) still
-    // require to use addStream without webrtc-adapter.
-    /*
-    localStream.getTracks().forEach(function (track) {
-      console.log('addTrack', track);
-      pc1.addTrack(track);
-    });
-    */
+        pc1.addStream(localStream);
 
+        // Note: Deprecated Test removeStream
+        // pc1.removeStream(pc1.getLocalStreams()[0]);<
+    }
+    
     function onAddIceCandidate(pc, can) {
         console.log('addIceCandidate', pc, can);
         return can && pc.addIceCandidate(can).catch(function(err) {
@@ -74,28 +78,15 @@ function TestRTCPeerConnection(localStream) {
         onAddIceCandidate(pc1, e.candidate);
     });
 
-    var useTrackEvent = Object.getOwnPropertyDescriptors(RTCPeerConnection.prototype).ontrack;
-
     if (useTrackEvent) {
 
-        var useTrackEventStreams = false;
-
-        if (!useTrackEventStreams) {
-            var peerStream = new MediaStream();
-            TestSetPeerStream(peerStream);
-        } else {
-            peerStream = null;
-        }
+        var peerStream;
 
         pc2.addEventListener('track', function(e) {
             console.log('pc2.track', e);
-
-            if (useTrackEventStreams) {
-                peerStream = e.streams[0];
-                TestSetPeerStream(peerStream);
-            } else {
-                peerStream.addTrack(e.track);
-            }
+            var peerStream = e.streams[0] || new MediaStream();
+            TestSetPeerStream(peerStream);   
+            peerStream.addTrack(e.track);
         });
     } else {
 
