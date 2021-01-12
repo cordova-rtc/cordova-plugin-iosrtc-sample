@@ -95,12 +95,12 @@ function TestCallOfferPeer(callUri) {
                 },
                 {
                     urls: "turn:sip.example.com:5349",
-                    username: "sylaps-MEL-9080337e-9080337e-5969-167c-c66b-d903b1c25535",
-                    credential: "7ba08b11325489b74cfb7b588275c86c"
+                    username: "turnuser",
+                    credential: "turnpwd"
                 }, {
                     urls: "turn:sip.example.com:5349?transport=tcp",
-                    username: "sylaps-MEL-9080337e-9080337e-5969-167c-c66b-d903b1c25535",
-                    credential: "7ba08b11325489b74cfb7b588275c86c"
+                    username: "turnuser",
+                    credential: "turnpwd"
                 }
             ]
         }
