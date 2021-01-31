@@ -39,7 +39,11 @@ function TestRTCPeerConnection() {
                 // Create session
                 janus = new Janus({
                     server: server,
-                    iceServers: peerConnectionConfig.iceServers,
+                    iceServers: [
+                        {
+                            url: "stun:stun.stunprotocol.org"
+                        }
+                    ],
                     success: function() {
                         // Attach to echo test plugin
                         janus.attach({
