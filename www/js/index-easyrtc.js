@@ -1,4 +1,4 @@
-const EASYRTC_SERVER = 'example.com';
+const EASYRTC_SERVER = 'https://example.com';
 const EASYRTC_APP_NAME = 'default';
 const EASYRTC_ROOM_NAME = 'test';
 
