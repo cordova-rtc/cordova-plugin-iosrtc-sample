@@ -213,7 +213,7 @@ function TestRTCPeerConnection() {
             realm: sipConfig.realm,
             //  Sip.JS
             hackWssInTransport: true,
-            authorizationUser: '1001',
+            authorizationUser: sipConfig.authorization_user,
             transportOptions: {
                 wsServers: sipConfig.server,
             },
