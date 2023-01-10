@@ -21,7 +21,7 @@ var sipConfig = {
 // Set debug
 window.localStorage.setItem('debug', '* -engine* -socket* *ERROR* *WARN*');
 
-// Note: Select JsSip Implementation (JSSip and SIP.js sipported).
+// Note: Select JsSip Implementation (JSSip and SIP.js supported).
 var jsSipUrl = "https://cdnjs.cloudflare.com/ajax/libs/jssip/3.1.2/jssip.min.js";
 //var jsSipUrl = "https://sipjs.com/download/sip-0.15.6.min.js";
 
