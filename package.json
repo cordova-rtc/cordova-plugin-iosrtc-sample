@@ -30,7 +30,7 @@
   "devDependencies": {
     "cordova": "^10.0.0",
     "cordova-android": "^8.1.0",
-    "cordova-browser": "^5.0.4",
+    "cordova-browser": "^6.0.0",
     "cordova-custom-config": "^5.1.0",
     "cordova-plugin-background-mode": "^0.7.3",
     "cordova-plugin-device": "^2.0.3",
